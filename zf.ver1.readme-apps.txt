@@ -1,0 +1,96 @@
+http://getbootstrap.com/examples/theme/ 
+
+
+http://framework.zend.com/manual/1.12/en/zend.tool.usage.cli.html
+
+zf create controller Post --module=Blogdksitv
+zf create model Post -m Blogdksitv
+
+
+The following will have to be run on the command line:
+    zf configure dbadapter "adapter=Pdo_Mysql&username=root&password=123456&dbname=tallyquizlive"
+    
+    
+    zf create db-table Category categorytype 
+    zf create controller Category
+	zf create model CategoryMapper
+	zf create model Category
+	
+	zf create action view Category
+	
+sudo vim demo.zf1app-dev.com.conf
+
+<VirtualHost *:80>
+	ServerName demo.zf1app-dev.com
+	ServerAlias demo.zf1app-dev.com
+	DocumentRoot /var/www/html/demo.2015/demo.apps/abc/public
+	<Directory /var/www/html/demo.2015/demo.apps/abc/public>
+		Options Indexes FollowSymLinks MultiViews
+		AllowOverride All
+		Order allow,deny
+		allow from all
+	</Directory>
+	ErrorLog /var/log/apache2/demo.zf1app-dev-error.log
+
+	# Possible values include: debug, info, notice, warn, error, crit,
+	# alert, emerg.
+	#LogLevel warn
+	LogLevel error
+	CustomLog /var/log/apache2/demo.zf1app-dev-access.log combined
+</VirtualHost>
+
+------------ readme ---------------
+-- phpMyAdmin SQL Dump
+-- version 4.0.10deb1
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Apr 26, 2015 at 07:03 PM
+-- Server version: 5.5.41-0ubuntu0.14.04.1
+-- PHP Version: 5.5.9-1ubuntu4.7
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `tallyquizlive`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categorytype`
+--
+
+CREATE TABLE IF NOT EXISTS `categorytype` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `desc` varchar(45) DEFAULT NULL,
+  `status` set('Active','Inactive') DEFAULT NULL,
+  `createddt` datetime DEFAULT NULL,
+  `updateddt` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `tqc_name_UNIQUE` (`name`),
+  KEY `status` (`status`),
+  KEY `createddt` (`createddt`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `categorytype`
+--
+
+INSERT INTO `categorytype` (`id`, `name`, `desc`, `status`, `createddt`, `updateddt`) VALUES
+(1, 'Taxation', 'Tax estimation ', 'Inactive', '2015-03-02 02:03:37', '2015-03-15 06:03:33'),
+(4, 'Accounts', 'Taxation Part description', 'Active', '2015-03-15 06:03:37', '2015-03-15 08:03:57'),
+(5, 'Vat', 'Vat Desc', 'Active', '2015-03-15 08:03:42', '2015-03-15 08:03:42'),
+(6, 'Service Tax', 'Service Tax', 'Active', '2015-03-15 08:03:48', '2015-03-15 08:03:48');
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
