@@ -1,0 +1,25 @@
+<?php
+    $url = $this->baseUrl(); 
+?>
+<div class="container">
+	<div class="page-header">
+        <h1>Category View:</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table">
+                <thead>
+                    <tr><th>Id</th><th>Name</th><th>Description</th><th>Created Date</th></tr>
+                </thead>
+                <tbody> 
+                    <tr>
+                        <td><?php echo $this->escape($this->entry->id) ?></td>
+                        <td><?php echo $this->escape($this->entry->name) ?></td>
+                        <td><?php echo $this->escape($this->entry->desc) ?></td>
+                        <td><?php echo $this->escape($this->entry->createddt) ?></td> 
+                    </tr> 
+                </tbody>
+            </table>
+        </div>
+	</div>
+</div>
